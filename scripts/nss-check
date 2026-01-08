@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+TESTDIR="/tmp/nixos-test"
+
+echo "==> Preparing test snapshot..."
+sudo rm -rf "$TESTDIR"
+sudo mkdir -p "$TESTDIR"
+sudo rsync -a /etc/nixos/ "$TESTDIR/"
+
+echo "==> Running safe build (no switch)..."
+sudo nixos-rebuild build \
+  -I nixos-config="$TESTDIR/nixos/configuration.nix"
+
+echo "==> OK: build succeeded, system NOT modified."
+
