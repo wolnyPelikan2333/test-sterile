@@ -71,6 +71,67 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 
 # 📅 SESJE (od najnowszej)
 
+08-01-2026 14:45
+
+Zamknięcie sesji — porządek kanoniczny AKTYWNA.md
+
+Stan końcowy (KANON):
+
+Jedynym kanonicznym plikiem stanu pracy jest:
+
+~/test-sterile/SESJE/AKTYWNA.md
+
+Wszystkie inne pliki AKTYWNA.md zostały usunięte (były puste) lub wygaszone.
+
+Stan kanonicznej AKTYWNA.md został ręcznie wyrównany z historycznym stanem z systemu.
+
+System (/etc/nixos):
+
+Plik:
+
+/etc/nixos/SESJE/AKTYWNA.md
+
+został oznaczony jako PLIK HISTORYCZNY – NIE EDYTOWAĆ,
+z jawną informacją o ścieżce do kanonu w repo (~/test-sterile/SESJE/AKTYWNA.md).
+
+Procedura pracy (utrwalona):
+
+Zmiany → LAB (~/test-sterile)
+
+Build w LAB → decyzja
+
+Kopiowanie plików LAB → /etc/nixos
+
+Build → switch w systemie
+
+Wpis końcowy do ~/test-sterile/SESJE/AKTYWNA.md
+
+LAB kontrolny (potwierdzony):
+
+Build z LAB (flake) → OK
+
+rsync --dry-run LAB → SYSTEM → zakres poprawny
+
+SYSTEM pozostał nietknięty
+
+Wnioski:
+
+Rozdzielenie LAB ↔ SYSTEM działa poprawnie.
+
+Repo jest jedynym miejscem procesu i prawdy roboczej.
+
+System nie służy do prowadzenia sesji ani planów.
+
+Status sesji:
+✅ zamknięta świadomie
+✅ bez długu technicznego
+✅ z jasnym punktem startowym na kolejną sesję
+
+✅ Ostatni krok (jeśli chcesz domknąć formalnie)
+cd ~/test-sterile
+git add SESJE
+git commit -m "checkpoint: zamknięcie sesji – kanon AKTYWNA.md i procedura LAB→SYSTEM"
+
 <!--
 KANON – JEDYNA AKTYWNA.md
 
