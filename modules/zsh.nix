@@ -184,7 +184,6 @@
           alias nixman="w3m https://nixos.org/manual/nixos/stable/"
           alias nixerr="less /etc/nixos/docs/ściągi/nix/nix-build-errors.md"
           alias st="sys-status"
-          alias nss="/etc/nixos/scripts/nss-safe"
           alias gba="git branch -a"
           alias gco="git checkout"
           alias gcb="git checkout -b"
@@ -193,6 +192,7 @@
           alias gr="git restore"
           alias gp="git push"
           alias lab="cd /home/michal/lab/"
+          alias nss-check="/home/michal/git-sterile/scripts/nss-check";
     '';
   };
 }
