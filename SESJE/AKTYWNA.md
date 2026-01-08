@@ -71,6 +71,245 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 
 # 📅 SESJE (od najnowszej)
 
+<!--
+KANON – JEDYNA AKTYWNA.md
+
+Ten plik jest jedynym źródłem prawdy o stanie pracy.
+
+System (/etc/nixos) NIE jest miejscem prowadzenia sesji,
+notatek roboczych ani planów.
+-->
+
+08-01-2026 18:20
+
+LAB kontrolny — zakończony bez zmian w systemie
+
+LAB: ~/test-sterile
+
+Repo-lab buduje się poprawnie jako flake (nix build … → OK).
+
+Potwierdzono poprawny pipeline:
+
+zmiany → LAB,
+
+build z LAB,
+
+decyzja,
+
+rsync --dry-run jako symulator.
+
+rsync --dry-run do /etc/nixos:
+
+zakres plików sensowny,
+
+brak ryzykownych usunięć,
+
+brak realnych zmian (tryb próbny).
+
+SYSTEM (/etc/nixos) pozostał nietknięty.
+
+Decyzja: nie kopiujemy dziś do systemu.
+
+Wnioski:
+
+Model LAB → SYSTEM działa poprawnie.
+
+Problemy nie wynikają z konfiguracji systemu ani sprzętu, tylko z automatyzacji/aliasów.
+
+Na następną sesję:
+
+Jawne kopiowanie LAB → SYSTEM (rsync bez --dry-run).
+
+nixos-rebuild build w /etc/nixos.
+
+Dopiero potem decyzja o switch.
+
+Porządek z aliasami gita / logiką nss.
+
+## Procedura pracy (KANON)
+
+1.  Wszystkie zmiany wykonujemy WYŁĄCZNIE w repo (LAB):
+
+    ~/test-sterile
+
+2.  W LAB wykonujemy próbny build:
+
+    nix build .#nixosConfigurations.$(hostname).config.system.build.toplevel
+
+3.  Jeśli build jest poprawny → decyzja:
+
+    - TAK → idziemy dalej
+    - NIE → koniec pracy, wpis do SESJE
+
+4.  Kopiujemy pliki z LAB do SYSTEMU:
+
+        rsync -av --delete ~/test-sterile/ /etc/nixos/
+
+    (opcjonalnie wcześniej: --dry-run)
+
+5.  W SYSTEMIE wykonujemy build:
+
+    cd /etc/nixos
+    nixos-rebuild build
+
+6.  Jeśli wszystko OK → switch:
+
+    nixos-rebuild switch
+
+7.  Po zakończeniu:
+    - wpis do ~/test-sterile/SESJE/AKTYWNA.md
+    - (opcjonalnie) checkpoint w SESJE/
+
+---
+
+08-01-2026 13:00
+
+Stan sesji / checkpoint:
+
+Potwierdzone, że wczorajsze problemy nie były awarią sprzętu, tylko efektem konfiguracji.
+
+Ustalona zasada wzajemnego zaufania:
+
+jeśli użytkownik mówi, że to nie sprzęt → traktujemy to jako punkt wyjścia,
+
+hipotezy weryfikujemy testami, bez nadpisywania intuicji.
+
+System i repo są logicznie rozdzielone, ale workflow wymaga dopięcia.
+
+Otwarte tematy (na następną sesję):
+
+Porządek z aliasami gita
+
+sprawdzić aliasy globalne vs lokalne vs shell,
+
+usunąć konflikty i duplikaty.
+
+nss
+
+poprawić logikę push (push tylko do właściwego repo),
+
+rozważyć rozdzielenie: system / lab.
+
+Lab kontrolny
+
+próbny build / suchy rsync / testowy commit (bez ryzyka).
+
+Do zrobienia później
+
+panic-stop,
+
+spójna funkcja czasu (data + godzina PL) w nss.
+
+Powód przerwania:
+Przeciążenie („krasnoludki”). Praca przerwana celowo, bez dalszych zmian w systemie.
+
+## SESJA — STAN BIEŻĄCY
+
+DATA: 08-01-2026
+GODZINA: 05:10
+STATUS: stabilnie, zmęczenie techniczne, przerwa wskazana
+
+### CO ZOSTAŁO ZROBIONE (FAKTY)
+
+- Rozdzielono **LAB / PROD**:
+
+  - LAB (repo, historia, testy): `/home/michal/git-sterile` (`test-sterile` na GitHub)
+  - PROD (źródło prawdy wykonawczej NixOS): `/etc/nixos`
+  - Archiwum starego stanu: `/etc/nixos.prod`
+
+- Git został **całkowicie usunięty z `/etc/nixos`** (kluczowe).
+- SSH do GitHub działa poprawnie (klucze OK, bez haseł).
+- Repo `test-sterile` poprawnie podpięte i zsynchronizowane.
+
+- Wprowadzono **bezpieczny workflow testowy**:
+
+  - `nss-check` = build systemu na kopii (`/tmp/nixos-test`)
+  - brak switcha, brak ryzyka
+  - potwierdzone: build OK
+
+- `nss`:
+  - jest **prawdziwą komendą systemową** w `$PATH`
+  - lokalizacja: `/run/current-system/sw/bin/nss`
+  - alias został usunięty (wcześniej maskował komendę)
+  - działa z każdego katalogu, także z sudo
+
+### WAŻNE USTALENIE (ŹRÓDŁA PRAWDY)
+
+- `SESJE/AKTYWNA.md` **musi być systemowe**:
+  - `/etc/nixos/SESJE/AKTYWNA.md` = jedyne źródło stanu bieżącego
+- Repo (`test-sterile`) = historia, plan, dokumentacja, archiwizacja zdarzeń
+- System zapisuje fakt, repo zapisuje pamięć
+
+---
+
+### RZECZY DO DOPRACOWANIA / NASTĘPNE KROKI
+
+1. **panic-stop**
+
+   - zrobić z niego **prawdziwą komendę w `$PATH`** (jak `nss`)
+   - jednoznaczne zachowanie:
+     - wpis do `/etc/nixos/SESJE/AKTYWNA.md`
+     - commit + push z repo `test-sterile`
+   - zero builda, zero switcha
+
+2. **LAB → PROD workflow (utrwalenie)**
+
+   - ćwiczyć schemat:
+     - zmiana w LAB
+     - `nss-check` (próbny build)
+     - decyzja
+     - `rsync` do `/etc/nixos`
+     - `nss` (świadomy switch)
+
+3. **Zachowanie `nss` po wciśnięciu `C`**
+
+   - obecnie:
+     - `C` robi build + switch + commit + push
+     - problem: commit/push prawdopodobnie wykonywany **nie w repo LAB**
+   - do sprawdzenia:
+     - skąd dokładnie `nss` robi commit
+     - czy commit dotyczy `/etc/nixos` (NIE CHCEMY)
+   - docelowo:
+     - commit/push tylko z repo LAB (`/home/michal/test-sterile`)
+     - `/etc/nixos` bez Gita
+
+4. **Dokumentacja**
+   - spisać krótką ściągę:
+     - „Jak testować zmiany bez ryzyka”
+     - „LAB vs PROD — zasady”
+     - „panic-stop — co robi i czego nie robi”
+
+---
+
+### UWAGI OPERACYJNE
+
+- Dzisiejsza sesja była długa i obciążająca.
+- Kluczowe problemy (Git, SSH, PATH, źródła prawdy) zostały rozwiązane poprawnie.
+- Dalsze prace **na spokojnie, w kolejnej sesji**.
+
+STATUS KOŃCOWY: DOBRY MOMENT NA PRZERWĘ
+
+### DOPISEK — NA JUTRO
+
+5. **Porządek z aliasami gita**
+   - obecnie:
+     - część aliasów działa
+     - część nie działa / działa niekonsekwentnie
+   - do ustalenia:
+     - które aliasy są:
+       - zsh-only
+       - git config (--global / --system)
+     - które są zbędne / dublujące się
+   - cel:
+     - jeden spójny zestaw aliasów gita
+     - przewidywalne działanie w LAB i poza nim
+     - brak „magii”, brak zgadywania
+
+UWAGA:
+
+- temat **na jutro**
+- dziś nie grzebać w aliasach (ryzyko + zmęczenie)
+
 ## 📅 2026-01-08 00:39
 
 - Mode: commit
