@@ -71,7 +71,62 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 
 # 📅 SESJE (od najnowszej)
 
-## 📅 10-01-2026 17:xx
+10-01-2026 19:12
+Stan sesji
+
+Podjęta decyzja o instalacji obu narzędzi:
+
+Taskwarrior jako szybki, decyzyjny task manager CLI
+
+Org-mode w Doom Emacs jako system planowania, notatek i refleksji
+
+Założenie: narzędzia komplementarne, nie konkurencyjne
+
+Taskwarrior → co robić teraz
+
+Org-mode → dlaczego, jak, co dalej
+
+Todo.txt świadomie odrzucone (zbyt małe możliwości)
+
+Kontekst / motywacja
+
+Preferencja pracy terminal > GUI
+
+Potrzeba:
+
+kontroli nad zadaniami (Taskwarrior)
+
+miejsca na myślenie, plan, dziennik pracy (Org-mode)
+
+Doom Emacs wybrany jako sensowny punkt wejścia do Org-mode bez ręcznej konfiguracji
+
+Plan na następną sesję
+
+Workflow dzienny – Taskwarrior
+
+poranne „co teraz”
+
+podstawowe raporty (next / today)
+
+start / done / defer
+
+Workflow dzienny – Org-mode (Doom Emacs)
+
+agenda dnia
+
+capture zadań i notatek
+
+zamykanie dnia + krótka refleksja
+
+Lekka integracja Taskwarrior ↔ Org-mode
+
+jasny podział ról
+
+bez skomplikowanej synchronizacji
+
+spójny model pracy
+
+## 📅 10-01-2026 18:30
 
 ### ✅ Zrobione
 
