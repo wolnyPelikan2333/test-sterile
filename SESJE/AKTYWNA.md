@@ -71,6 +71,67 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 
 # 📅 SESJE (od najnowszej)
 
+Data 09-01-2026
+Godzina 23:12
+
+Usunięto tmux
+
+Zainstalowano calibre i broot
+
+Skonfigurowano broot z kitty
+
+Data: 09-01-2026
+Godzina: 02:42
+
+Stan sesji
+
+Utworzone repo nix-learning-notes
+
+Repo wypchnięte na GitHub
+
+Utworzone katalogi:
+
+zsh/
+
+nvim/
+
+tmux/
+
+Dodane pliki 00-overview.md w każdym katalogu
+
+Zrobiony i wypchnięty commit inicjalny
+
+Aktualny kontekst
+
+Nauka Nixa / Home-Managera prowadzona świadomie i wolno
+
+Celem jest zrozumienie, a nie szybka konfiguracja
+
+Repo służy jako laboratorium myślenia, osobne od /etc/nixos
+
+Sygnał przeciążenia
+
+Pojawiły się „krasnoludki” → zatrzymanie dalszej analizy
+
+Potrzeba zwolnienia tempa i jasnych, małych kroków
+
+Plan na następną sesję
+
+W katalogu zsh/:
+
+utworzyć plik
+01-what-is-a-home-manager-module.md
+
+opisać własnymi słowami, czym wydaje się być moduł Home-Manager
+
+Bez czytania cudzych flake’ów
+
+Bez instalowania czegokolwiek
+
+Dopiero potem:
+
+wskazać, gdzie w terminal-config znajduje się moduł Zsh
+
 08-01-2026 14:45
 
 Zamknięcie sesji — porządek kanoniczny AKTYWNA.md
