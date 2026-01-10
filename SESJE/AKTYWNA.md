@@ -71,6 +71,32 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 
 # 📅 SESJE (od najnowszej)
 
+## 📅 10-01-2026 17:xx
+
+### ✅ Zrobione
+
+- Naprawiona i ustabilizowana konfiguracja **zsh w Home Managerze** (`/etc/nixos/modules/zsh.nix`)
+- Rozdzielone odpowiedzialności:
+  - `initContent` → funkcje, aliasy, narzędzia
+  - `initExtra` → wyłącznie PROMPT
+- Dodany lekki, operatorski prompt z informacją o **git (branch / dirty / ahead)** działający w każdym repo
+- Potwierdzony poprawny build i switch (`nixos-rebuild build` / `switch`)
+- Workflow mentalny utrwalony: porządek, brak magii, deklaratywnie
+
+### 🧠 Ustalenia / wnioski
+
+- Zsh jest w pełni zarządzany przez **Home Manager** — brak `.zshrc` jako źródła prawdy
+- Prompt zawsze w `programs.zsh.initExtra`
+- Brak mieszania opcji NixOS (`environment.*`) z Home Managerem
+- Jeśli krasnoludki idą → zapis, stop, checkpoint
+
+### 🟡 Na później (bez presji)
+
+- Ewentualne drobne kosmetyki promptu (kolory symboli)
+- Porządkowanie komentarzy w `zsh.nix` (DLACZEGO tak, nie tylko CO)
+
+Stan: **STABILNY** ✅
+
 Data 09-01-2026
 Godzina 23:12
 
