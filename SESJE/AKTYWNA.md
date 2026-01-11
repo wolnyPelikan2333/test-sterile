@@ -71,6 +71,39 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 
 # 📅 SESJE (od najnowszej)
 
+10-01-2026 23:55 11-01-2026 02:07
+
+STATUS:
+
+- Mail: Thunderbird skonfigurowany i działający (IMAP + OAuth Microsoft).
+- Potwierdzone: operacje w Thunderbirdzie (usuwanie, przenoszenie) synchronizują się z serwerami Microsoftu.
+- Widok listy maili: wyłączone wątkowanie + widok tabeli → sortowanie po dacie działa poprawnie (najnowsze na górze).
+- Locale systemowe OK (pl_PL.UTF-8), format daty europejski.
+
+DECYZJE:
+
+- Rezygnacja z terminalowego maila dla Microsoft (mbsync/aerc/neomutt) — zbyt duży narzut i niestabilność OAuth.
+- Thunderbird zaakceptowany jako pragmatyczne rozwiązanie komunikacyjne (mail ≠ core workflow terminala).
+
+TASK MANAGER:
+
+- Doom Emacs: ZAINSTALOWANY.
+- Taskwarrior: ZAINSTALOWANY.
+- Brak decyzji, który system jest docelowy.
+
+PLAN NA JUTRO:
+
+1. Testy Taskwarrior (praktyczny workflow dnia w terminalu).
+2. Porównanie realne: Taskwarrior vs org-mode (w Doom Emacs).
+3. Decyzja: jeden system zadań jako docelowy (bez mieszania).
+4. Wpis koncepcyjny do AKTYWNA.md:
+   „Jak wygląda dzień pracy na NixOS + terminal”.
+5. Ogarnąć maile w Thunderbird
+   UWAGI:
+
+- Dziś skupienie na zamknięciu komunikacji (mail) — słuszna decyzja.
+- Następna sesja: bez instalacji nowych narzędzi, tylko testy i decyzje.
+
 10-01-2026 19:12
 Stan sesji
 
