@@ -1,0 +1,100 @@
+🔑 Klucz do Doom Emacs (najważniejsze)
+
+SPC → główny prefix (jak leader w vimie)
+
+SPC SPC → M-x (uruchamianie poleceń)
+
+ESC → wyjście / anuluj / normal mode
+
+: → polecenie Ex (jak w vimie)
+
+SPC f f   find file
+SPC f r   recent files
+SPC f s   save file
+SPC f S   save all
+
+SPC b b   switch buffer
+SPC b k   kill buffer
+SPC b n / p   next / previous buffer
+
+SPC w v   split vertical
+SPC w s   split horizontal
+SPC w d   close window
+SPC w w   next window
+
+Myślenie jak w tmux / kitty — okna są naturalne.
+
+🧠 Pomoc, odkrywanie, cheat-mode
+
+SPC h d h   describe key
+SPC h f     describe function
+SPC h v     describe variable
+SPC h m     describe mode
+SPC h k     describe key
+👉 To jest Twoje Google w Emacsie.
+
+i / a / o     insert
+dd            delete line
+yy            yank line
+p             paste
+u             undo
+C-r           redo
+.             repeat
+Wszystko działa jak w vimie, bez niespodzianek.
+
+🔍 Szukanie i nawigacja w kodzie
+pgsql
+Skopiuj kod
+SPC /        ripgrep (project search)
+SPC s s      search in buffer
+SPC s p      search in project
+
+gd           go to definition
+gr           references
+gi           go to implementation
+👉 Jeśli znasz rg + nvim, to jesteś w domu.
+
+🌳 Projekty (projectile)
+
+Skopiuj kod
+SPC p p   switch project
+SPC p f   find file in project
+SPC p s   search in project
+SPC p b   project buffers
+
+🧪 Git (magit)
+
+Skopiuj kod
+SPC g g   magit status
+SPC g b   blame
+SPC g c   commit
+SPC g p   push
+SPC g l   log
+💡 Magit = najlepszy interfejs do gita, jaki istnieje.
+
+🧩 Org-mode / notatki / taski
+arduino
+Skopiuj kod
+SPC n n   open notes
+SPC n f   find note
+
+SPC m t   todo
+SPC m d   deadline
+SPC m s   schedule
+(Doom robi tu ogromną robotę — dużo automatu)
+
+🧨 Awaryjne / reset
+
+Skopiuj kod
+ESC ESC ESC   panic escape
+SPC q q       quit emacs
+SPC q r       restart emacs
+SPC q s       save & quit
+🧠 Jak się tego uczyć (ważne)
+Uczysz się tylko SPC + 3–4 litery
+
+Jak zapomnisz → SPC h d h
+
+Doom podpowiada (which-key)
+
+👉 Po 2–3 dniach przestajesz myśleć o skrótach.

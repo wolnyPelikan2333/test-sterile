@@ -1,0 +1,46 @@
+🧾 ŚCIĄGA — Org / Doom Emacs
+
+TODO → kalendarz (agenda)
+
+1️⃣ Lista wszystkich zadań (punkt startowy)
+SPC o A t
+
+
+➡️ widok TODO list (tu zawsze są zadania)
+
+2️⃣ Wejście do konkretnego zadania
+
+(kursor stoi na linii TODO …)
+
+TAB
+
+
+lub
+
+o
+
+
+➡️ otwiera todo.org na tym zadaniu
+
+3️⃣ Dodanie zadania do kalendarza
+
+(kursor na * TODO … w pliku .org)
+
+C-c C-s
+
+
+➡️ wybierz datę → RET
+
+Efekt w pliku:
+
+* TODO …
+  SCHEDULED: <YYYY-MM-DD Day>
+
+4️⃣ Widok kalendarza
+SPC o A a
+
+
+➡️ zadanie pojawi się pod datą
+
+🧠 Najkrótszy model w głowie
+SPC o A t → TAB → C-c C-s → SPC o A a

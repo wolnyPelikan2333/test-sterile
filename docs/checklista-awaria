@@ -1,0 +1,145 @@
+# Checklist: awaria → pytania, które zadać
+
+> **Cel:** przejść z reaktywnego „naprawiania” do diagnostyki opartej na stanie.
+> Checklistę można stosować **zarówno w systemach deklaratywnych (NixOS)**, jak i **imperatywnych (Arch, Debian, Ubuntu)**.
+
+---
+
+## 0. Zatrzymanie
+
+* [ ] Czy wiem **co dokładnie nie działa** (jedno zdanie, bez interpretacji)?
+* [ ] Czy problem jest **powtarzalny**, czy losowy?
+* [ ] Czy coś zmieniałem **tuż przed awarią**?
+
+> Jeśli nie umiesz tego nazwać → jeszcze nic nie naprawiaj.
+
+---
+
+## 1. Stan docelowy (najważniejsze pytanie)
+
+* [ ] Jak **powinien wyglądać poprawny stan** systemu/usługi?
+* [ ] Co dokładnie oznacza „działa” w tym przypadku?
+* [ ] Czy ten stan jest:
+
+  * [ ] opisany (konfiguracja, notatka, repo)
+  * [ ] tylko „w głowie”?
+
+> Brak opisu = dług techniczny.
+
+---
+
+## 2. Granica odpowiedzialności
+
+* [ ] Który komponent **odpowiada** za ten element?
+
+  * kernel
+  * systemd / init
+  * usługa
+  * aplikacja
+  * konfiguracja użytkownika
+* [ ] Co **nie powinno** mieć na to wpływu?
+
+> Nie debuguj wszystkiego naraz.
+
+---
+
+## 3. Źródło prawdy
+
+* [ ] Gdzie *powinien* być zapisany stan?
+
+  * plik konfiguracyjny
+  * repo Git
+  * deklaracja (flake, module, playbook)
+* [ ] Czy istnieje **więcej niż jedno miejsce**, które może ten stan ustawiać?
+
+> Jeśli są dwa źródła prawdy — masz konflikt.
+
+---
+
+## 4. Różnica (diff mentalny)
+
+* [ ] Co **różni stan aktualny od docelowego**?
+* [ ] Czy różnica jest:
+
+  * [ ] w konfiguracji
+  * [ ] w wersji
+  * [ ] w kolejności uruchamiania
+  * [ ] w środowisku (PATH, env)
+
+> Debugujesz **różnicę**, nie system.
+
+---
+
+## 5. Historia
+
+* [ ] Kiedy ostatnio **działało poprawnie**?
+* [ ] Co zmieniło się od tego momentu?
+* [ ] Czy da się wskazać **jedną zmianę**?
+
+> Jedna zmiana → jeden podejrzany.
+
+---
+
+## 6. Minimalizacja
+
+* [ ] Czy da się **wyłączyć wszystko inne**?
+* [ ] Czy problem występuje w **najprostszym możliwym scenariuszu**?
+* [ ] Czy nowy użytkownik / czyste środowisko ma ten sam problem?
+
+> Jeśli nie — problem jest w warstwie użytkownika.
+
+---
+
+## 7. Diagnostyka, nie leczenie
+
+* [ ] Czy czytam **logi**, czy tylko restartuję?
+* [ ] Czy komunikat błędu mówi:
+
+  * *czego brakuje?*
+  * *co się nie zgadza?*
+* [ ] Czy rozumiem komunikat, czy go ignoruję?
+
+> Restart bez diagnozy = maskowanie problemu.
+
+---
+
+## 8. Cofanie, nie „naprawianie”
+
+* [ ] Czy mogę **cofnąć ostatnią zmianę**?
+* [ ] Czy cofnięcie przywraca poprawny stan?
+
+> Cofnięcie jest testem hipotezy.
+
+---
+
+## 9. Dokumentacja po fakcie
+
+* [ ] Czy wiem **dlaczego** wystąpiła awaria?
+* [ ] Czy zapisałem:
+
+  * przyczynę
+  * objaw
+  * rozwiązanie
+* [ ] Czy następnym razem zajmie to mniej czasu?
+
+> Niezapisana awaria wróci.
+
+---
+
+## 10. Sygnały ostrzegawcze (STOP)
+
+Zatrzymaj się, jeśli:
+
+* [ ] zaczynasz zmieniać losowe rzeczy
+* [ ] robisz trzeci restart „na wszelki wypadek"
+* [ ] nie umiesz powiedzieć, *co testujesz*
+
+> To moment na przerwę, nie na kolejne komendy.
+
+---
+
+## Jedno zdanie na koniec
+
+> **Nie pytaj „jak to naprawić”, tylko „jaki stan chcę odzyskać”.**
+
+Ta checklistą uczysz się myśleć **jak architekt systemu**, niezależnie od dystrybucji.

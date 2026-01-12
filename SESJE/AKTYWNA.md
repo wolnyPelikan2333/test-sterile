@@ -70,6 +70,37 @@ Trudność w rozróżnieniu: terminal vs Neovim vs rejestryrawiać
 ---
 
 # 📅 SESJE (od najnowszej)
+11-01-2026 20:38
+
+Utworzenie w /docs/checklista-awaria
+
+W pliku zawarte są informacje na temat co robić w razie awarii systemu
+
+11-01-2026 03:45
+
+Org-mode / Doom Emacs — agenda i TODO
+
+Ustalono poprawny workflow pracy z org-agendą:
+
+- Agenda (SPC o A a) to KALENDARZ i pokazuje wyłącznie zadania z datą
+  (SCHEDULED / DEADLINE).
+- Lista zadań bez daty jest dostępna w widoku TODO:
+  SPC o A t.
+
+Poprawna sekwencja dodania zadania do kalendarza:
+
+1. SPC o A t — otwarcie listy TODO
+2. TAB / o — wejście do zadania w pliku .org
+3. C-c C-s — dodanie daty (SCHEDULED)
+4. SPC o A a — powrót do kalendarza
+
+Wyjaśniono, że:
+
+- linie z datami w agendzie nie są zadaniami (nagłówki),
+- komunikat „Command not allowed in this line” oznacza próbę operacji na dacie,
+- diary (Emacs Diary) ≠ org-mode i nie jest źródłem TODO.
+
+Stan: działa poprawnie, zadania pojawiają się w kalendarzu po nadaniu daty.
 
 10-01-2026 23:55 11-01-2026 02:07
 
