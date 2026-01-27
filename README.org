@@ -1,0 +1,71 @@
+#+TITLE: test-sterile — repo nauki
+#+AUTHOR: Michal Walewski
+
+#+BEGIN_QUOTE
+NOTE (English):
+
+This repository is a sterile learning and experimentation space.
+It is intentionally isolated from any production or recovery setup.
+
+Nothing here is expected to be stable, complete, or reusable as-is.
+You are welcome to explore ideas and adapt anything that is useful.
+#+END_QUOTE
+
+
+* Czym jest to repo
+
+To repozytorium jest **miejscem do nauki, testów i eksperymentów**.
+
+Służy do sprawdzania pomysłów bez ryzyka
+i bez wpływu na system produkcyjny.
+
+* Jaką pełni rolę
+
+To repo istnieje po to, żeby:
+- próbować,
+- psuć,
+- cofać się,
+- uczyć się przez działanie.
+
+Nie obowiązują tu wymagania spójności ani kompletności.
+
+* Relacja do innych repozytoriów
+
+- repo systemowe  
+  Definiuje działający system.
+  To repo **nigdy** nie jest jego źródłem.
+
+- repo mapa  
+  Tłumaczy sens i decyzje.
+  To repo nie musi niczego tłumaczyć.
+
+- repo operacyjne  
+  Zawiera pliki potrzebne do pracy.
+  To repo nie jest do codziennego użytku.
+
+`test-sterile` jest **izolowane koncepcyjnie**.
+
+* Granica odpowiedzialności
+
+To repo odpowiada za:
+- proces uczenia się,
+- eksperymenty,
+- ślepe uliczki.
+
+Nie odpowiada za:
+- działanie systemu,
+- możliwość odbudowy,
+- porządek.
+
+* Stan domyślny
+
+Brak tego repo:
+- nie wpływa na system,
+- nie wpływa na pracę.
+
+Jego obecność:
+- zmniejsza strach przed eksperymentem,
+- pozwala uczyć się bez presji.
+
+To repo **nie musi być dobre**.
+Wystarczy, że jest bezpieczne.
